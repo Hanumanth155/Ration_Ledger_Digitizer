@@ -1,0 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" %><%@ taglib prefix="c" uri="jakarta.tags.core" %><%@ include file="../common/header.jsp" %>
+<h1>Record Ration Collection</h1><div class="panel"><c:if test="${not empty error}"><div class="alert danger">${error}</div></c:if>
+<form method="post" action="distribution/save" class="form-grid"><label>Beneficiary<select name="beneficiaryId" required><option value="">Select</option><c:forEach var="b" items="${beneficiaries}"><option value="${b.beneficiary_id}">${b.ration_card_number} - ${b.full_name}</option></c:forEach></select></label>
+<label>Allocation<select name="allocationId" required><option value="">Select</option><c:forEach var="a" items="${allocations}"><option value="${a.allocation_id}">${a.allocation_month}/${a.allocation_year} — Rice ${a.rice_kg} KG, Wheat ${a.wheat_kg} KG</option></c:forEach></select></label>
+<label class="wide">Remarks<textarea name="remarks"></textarea></label><div class="wide"><button class="btn primary">Confirm Collection</button><a class="btn" href="distributions">Cancel</a></div></form>
+<p class="muted">The system automatically uses the published allocation quantities and prevents duplicate collection for the same beneficiary and month.</p></div><%@ include file="../common/footer.jsp" %>

@@ -1,0 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" %><%@ taglib prefix="c" uri="jakarta.tags.core" %><%@ include file="../common/header.jsp" %>
+<div class="panel-head"><div><h1>Beneficiaries</h1><p class="muted">Manage ration card holders and user accounts.</p></div><a class="btn primary" href="beneficiary">+ Add Beneficiary</a></div>
+<form class="filters"><input name="search" placeholder="Search name, card or mobile" value="${param.search}"><select name="status"><option value="">All Status</option><option>ACTIVE</option><option>INACTIVE</option></select><button class="btn">Search</button></form>
+<div class="table-wrap"><table><thead><tr><th>Card</th><th>Name</th><th>Mobile</th><th>Family</th><th>Type</th><th>Status</th><th>Action</th></tr></thead><tbody>
+<c:forEach var="b" items="${list}"><tr><td>${b.ration_card_number}</td><td>${b.full_name}</td><td>${b.mobile}</td><td>${b.family_size}</td><td>${b.card_type}</td><td><span class="status ${b.status}">${b.status}</span></td><td><a href="beneficiary?id=${b.beneficiary_id}">Edit</a> · <form class="inline" method="post" action="beneficiary/toggle"><input type="hidden" name="id" value="${b.beneficiary_id}"><button class="link-btn">${b.status=='ACTIVE'?'Deactivate':'Activate'}</button></form></td></tr></c:forEach>
+</tbody></table></div><%@ include file="../common/footer.jsp" %>

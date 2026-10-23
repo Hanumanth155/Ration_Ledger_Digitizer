@@ -1,0 +1,1 @@
+</main><footer>Ration Ledger Digitizer • Digital record management system</footer><script src="<%=request.getContextPath()%>/js/app.js"></script></body></html>

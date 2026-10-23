@@ -1,0 +1,18 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Create account | Ration Ledger</title><link rel="stylesheet" href="<%=request.getContextPath()%>/css/app.css"></head><body class="auth-page signup-page">
+<div class="auth-shell signup-shell"><section class="auth-story"><div class="auth-brand"><span class="brand-mark">RL</span><div><b>Ration Ledger</b><small>PUBLIC DISTRIBUTION PORTAL</small></div></div><div class="story-copy"><span class="eyebrow">GET STARTED</span><h1>Your ration details,<br><em>all in one place.</em></h1><p>Create a beneficiary account to view your monthly ration allocation, collection dates, public notices and past collection records.</p><div class="story-points"><div><span>✓</span><div><b>Personal ration dashboard</b><small>View your card details and current entitlement.</small></div></div><div><span>✓</span><div><b>Updates in one place</b><small>See schedule changes and important announcements.</small></div></div><div><span>✓</span><div><b>Collection history</b><small>Access records and available digital receipts.</small></div></div></div></div><div class="story-foot">A CLEARER WAY TO STAY INFORMED</div></section>
+<section class="auth-form-side"><div class="auth-form-card signup-card"><div class="mobile-brand"><span class="brand-mark">RL</span><b>Ration Ledger</b></div><span class="eyebrow green">BENEFICIARY REGISTRATION</span><h2>Create your account</h2><p class="auth-sub">Enter your details as they appear on your ration card.</p>
+<% if(request.getAttribute("error")!=null){%><div class="alert danger"><%=request.getAttribute("error")%></div><%}%>
+<form method="post" action="<%=request.getContextPath()%>/signup" class="signup-grid">
+<label>Full name<input name="name" placeholder="Your full name" required maxlength="120"></label>
+<label>Ration card number<input name="card" placeholder="e.g. RC10025" required maxlength="50"></label>
+<label>Mobile number<input name="mobile" placeholder="10-digit mobile" required pattern="[0-9]{10}" maxlength="10"></label>
+<label>Email address<input type="email" name="email" placeholder="you@example.com" maxlength="120"></label>
+<label>Family size<input type="number" name="family" min="1" max="30" value="1" required></label>
+<label>Card type<select name="cardType" required><option value="PHH">PHH</option><option value="AAY">AAY</option><option value="NPHH">NPHH</option></select></label>
+<label class="span-2">Address<textarea name="address" placeholder="House, street, town / village" required maxlength="255"></textarea></label>
+<label>Choose username<input name="username" required minlength="4" maxlength="80" autocomplete="username" placeholder="At least 4 characters"></label>
+<label>Create password<input type="password" name="password" required minlength="8" autocomplete="new-password" placeholder="At least 8 characters"></label>
+<label class="span-2">Confirm password<input type="password" name="confirmPassword" required minlength="8" autocomplete="new-password" placeholder="Re-enter password"></label>
+<div class="span-2"><button class="btn primary auth-submit" type="submit">Create beneficiary account <span>→</span></button></div>
+</form><div class="signup-prompt">Already registered? <a href="<%=request.getContextPath()%>/index.jsp">Sign in</a></div><div class="auth-note">Admin accounts are created by the system administrator and cannot be self-registered.</div></div><footer class="auth-footer">© Ration Ledger Digitizer · Digital ration record management</footer></section></div></body></html>

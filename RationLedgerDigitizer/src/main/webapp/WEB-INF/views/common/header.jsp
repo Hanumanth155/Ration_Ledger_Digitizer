@@ -1,0 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ration Ledger Digitizer</title><link rel="stylesheet" href="<%=request.getContextPath()%>/css/app.css"></head><body>
+<header class="topbar"><div class="brand"><span>RL</span><div><strong>Ration Ledger</strong><small>Public Distribution Portal</small></div></div><nav>
+<% if("ADMIN".equals(session.getAttribute("role"))){ %>
+<a href="<%=request.getContextPath()%>/admin/dashboard">Dashboard</a><a href="<%=request.getContextPath()%>/admin/beneficiaries">Beneficiaries</a><a href="<%=request.getContextPath()%>/admin/allocations">Allocations</a><a href="<%=request.getContextPath()%>/admin/distributions">Distributions</a><a href="<%=request.getContextPath()%>/admin/announcements">Announcements</a><a href="<%=request.getContextPath()%>/admin/stock">Stock</a><a href="<%=request.getContextPath()%>/admin/reports">Reports</a>
+<% } else { %>
+<a href="<%=request.getContextPath()%>/user/dashboard">Dashboard</a><a href="<%=request.getContextPath()%>/user/history">Ration History</a><a href="<%=request.getContextPath()%>/user/announcements">Announcements</a><a href="<%=request.getContextPath()%>/user/profile">Profile</a>
+<% } %><a class="logout" href="<%=request.getContextPath()%>/logout">Logout</a></nav></header><main class="container">

@@ -1,0 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" %><%@ taglib prefix="c" uri="jakarta.tags.core" %><%@ include file="../common/header.jsp" %>
+<h1>${empty a?'Create Monthly Allocation':'Edit Allocation'}</h1><div class="panel"><form method="post" action="allocation/save" class="form-grid"><input type="hidden" name="id" value="${a.allocation_id}">
+<label>Month<input type="number" name="month" min="1" max="12" value="${empty a?12:a.allocation_month}" required></label><label>Year<input type="number" name="year" value="${empty a?2026:a.allocation_year}" required></label>
+<label>Rice (KG)<input type="number" step="0.01" name="rice" value="${a.rice_kg}" required></label><label>Wheat (KG)<input type="number" step="0.01" name="wheat" value="${a.wheat_kg}" required></label>
+<label>Sugar (KG)<input type="number" step="0.01" name="sugar" value="${a.sugar_kg}" required></label><label>Dal (KG)<input type="number" step="0.01" name="dal" value="${a.dal_kg}" required></label>
+<label>Other Item<input name="otherItem" value="${a.other_item}"></label><label>Other Qty (KG)<input type="number" step="0.01" name="other" value="${a.other_kg}"></label>
+<label>Start Date<input type="date" name="startDate" value="${a.start_date}" required></label><label>End Date<input type="date" name="endDate" value="${a.end_date}" required></label>
+<label>Start Time<input type="time" name="startTime" value="${empty a?'10:00':a.start_time}"></label><label>End Time<input type="time" name="endTime" value="${empty a?'17:00':a.end_time}"></label>
+<label class="wide">Distribution Location<input name="location" value="${a.location}" required></label><label class="wide">Notes<textarea name="notes">${a.notes}</textarea></label>
+<label>Status<select name="status"><option>DRAFT</option><option ${a.status=='PUBLISHED'?'selected':''}>PUBLISHED</option><option ${a.status=='CLOSED'?'selected':''}>CLOSED</option></select></label>
+<div class="wide"><button class="btn primary">Save Allocation</button> <a class="btn" href="allocations">Cancel</a></div></form></div><%@ include file="../common/footer.jsp" %>
