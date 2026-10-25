@@ -13,7 +13,22 @@ public class AdminServlet extends HttpServlet {
    switch(path){
     case "/dashboard": req.setAttribute("stats",dao.stats()); req.setAttribute("announcements",dao.announcements(true)); req.setAttribute("allocation",dao.currentAllocation()); forward(req,resp,"/WEB-INF/views/admin/dashboard.jsp"); break;
     case "/beneficiaries": req.setAttribute("list",dao.beneficiaries(req.getParameter("search"),req.getParameter("status"))); forward(req,resp,"/WEB-INF/views/admin/beneficiaries.jsp");break;
-    case "/beneficiary": req.setAttribute("b",dao.beneficiaryById(Integer.parseInt(req.getParameter("id")))); forward(req,resp,"/WEB-INF/views/admin/beneficiary-form.jsp");break;
+
+case "/beneficiary": {
+    String id = req.getParameter("id");
+
+    if (id == null || id.isBlank()) {
+        req.setAttribute("b", null);
+    } else {
+        req.setAttribute("b",
+            dao.beneficiaryById(Integer.parseInt(id)));
+    }
+
+    forward(req, resp,
+        "/WEB-INF/views/admin/beneficiary-form.jsp");
+    break;
+}
+
     case "/allocations": req.setAttribute("list",dao.allocations());forward(req,resp,"/WEB-INF/views/admin/allocations.jsp");break;
     case "/allocation": req.setAttribute("a",req.getParameter("id")==null?null:dao.allocationById(Integer.parseInt(req.getParameter("id"))));forward(req,resp,"/WEB-INF/views/admin/allocation-form.jsp");break;
     case "/announcements":req.setAttribute("list",dao.announcements(true));forward(req,resp,"/WEB-INF/views/admin/announcements.jsp");break;
